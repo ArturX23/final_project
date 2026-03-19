@@ -1,4 +1,4 @@
-# final_project/__init__.py
+# final_project/blog/__init__.py
 
 from flask import Flask
 from config import Config
@@ -10,4 +10,4 @@ app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-from app import routes, models
+from blog import routes, models
