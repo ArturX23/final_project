@@ -1,4 +1,4 @@
-# blog/__init__.py
+# final_project/__init__.py
 
 from flask import Flask
 from config import Config

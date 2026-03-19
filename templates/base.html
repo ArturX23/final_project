@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Tu wpisz tytuł{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="body">
+
+    <!-- NAVBAR -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="navbar-logo">
+                    Tu nazwa bloga
+                </div>
+                <ul class="navbar-menu">
+                    <li class="navbar-item">
+                        <a href="#" class="navbar-link">Strona główna</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="#" class="navbar-link">Dodaj post</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="#" class="navbar-link">Logowanie</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+        <div class="container">
+            {% block content %}
+            <!-- Tu zawartość strony -->
+            {% endblock %}
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-text">Tu stopka</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    {% block scripts %}
+    <!-- Tu dodatkowe skrypty -->
+    {% endblock %}
+
+</body>
+</html>
