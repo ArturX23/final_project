@@ -5,6 +5,8 @@ from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
+
+
 app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
@@ -16,5 +18,16 @@ from blog import routes, models
 def make_shell_context():
   return {
       "db": db,
-      "Entry": models.Entry
+      "Entry": models.Entry,
   }
+
+from blog.models import Entry, generate_entries
+
+@app.shell_context_processor
+def make_shell_context():
+    return {
+        'db': db,
+        'Entry': Entry,
+        'generate_entries': generate_entries
+    }
+

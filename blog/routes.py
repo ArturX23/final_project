@@ -6,5 +6,5 @@ from blog.models import Entry
 
 @app.route("/")
 def index():
-   all_posts = Entry.query.filter_by(is_published=True).order_by(Entry.pub_date.desc())
-   return render_template("index.html", all_posts=all_posts)
+    posts = Entry.query.filter_by(is_published=True).all()
+    return render_template("index.html", posts=posts)
