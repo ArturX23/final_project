@@ -1,56 +1,63 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>{% block title %}Tu wpisz tytuł{% endblock %}</title>
+    <title>{% block title %}Mój blog{% endblock %}</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    {% block head %}
+    {% endblock %}
 </head>
-<body class="body">
+
+<body>
 
     <!-- NAVBAR -->
-    <header class="header">
-        <nav class="navbar">
-            <div class="navbar-container">
-                <div class="navbar-logo">
-                    Tu nazwa bloga
-                </div>
-                <ul class="navbar-menu">
-                    <li class="navbar-item">
-                        <a href="#" class="navbar-link">Strona główna</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="#" class="navbar-link">Dodaj post</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="#" class="navbar-link">Logowanie</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">Mój blog</a>
 
-    <!-- MAIN CONTENT -->
-    <main class="main">
-        <div class="container">
-            {% block content %}
-            <!-- Tu zawartość strony -->
-            {% endblock %}
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarMain">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMain">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Strona główna</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Dodaj post</a>
+                </li>
+            </ul>
+
+            <form class="form-inline">
+                <input class="form-control mr-2" type="text" placeholder="Szukaj">
+                <button class="btn btn-outline-light" type="submit">Szukaj</button>
+            </form>
         </div>
+    </nav>
+
+    <!-- MAIN -->
+    <main role="main" class="container" style="padding-top: 5rem;">
+
+        {% block content %}
+        <!-- Tu zawartość strony -->
+        {% endblock %}
+
     </main>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-container">
-            <p class="footer-text">Tu stopka</p>
-        </div>
-    </footer>
-
     <!-- SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
     {% block scripts %}
-    <!-- Tu dodatkowe skrypty -->
     {% endblock %}
 
 </body>
