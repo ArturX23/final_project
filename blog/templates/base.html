@@ -29,10 +29,10 @@
         <div class="collapse navbar-collapse" id="navbarMain">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Strona główna</a>
+                    <a class="nav-link" href="{{ url_for('index') }}">Strona główna</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Dodaj post</a>
+                    <a class="nav-link" href="{{ url_for('manage_entry') }}">Dodaj post</a>
                 </li>
             </ul>
 
