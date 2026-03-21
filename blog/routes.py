@@ -10,6 +10,8 @@ def index():
     posts = Entry.query.filter_by(is_published=True).all()
     return render_template("index.html", posts=posts)
 
+# ADD/EDIT POST REFACTORED
+
 @app.route("/post/", defaults={'entry_id': None}, methods=["GET", "POST"])
 @app.route("/post/<int:entry_id>", methods=["GET", "POST"])
 def manage_entry(entry_id):
