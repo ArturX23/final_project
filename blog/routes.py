@@ -1,6 +1,6 @@
 # final_project/blog/routes.py
 
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, flash
 from blog import app
 from blog.models import Entry, db
 from blog.forms import EntryForm
@@ -23,17 +23,20 @@ def manage_entry(entry_id):
         form = EntryForm()
 
     if form.validate_on_submit():
-        if entry:  # edycja
-            form.populate_obj(entry)
-        else:      # nowy wpis
-            entry = Entry(
-                title=form.title.data,
-                body=form.body.data,
-                is_published=form.is_published.data
-            )
-            db.session.add(entry)
+        if form.validate_on_submit():
+            if entry:
+                form.populate_obj(entry)
+                flash("Wpis został zaktualizowany!")
+            else:
+                entry = Entry(
+                    title=form.title.data,
+                    body=form.body.data,
+                    is_published=form.is_published.data
+                )
+                db.session.add(entry)
+                flash("Twój wpis został dodany!")
 
-        db.session.commit()
-        return redirect(url_for('index'))
+            db.session.commit()
+            return redirect(url_for('index'))
 
     return render_template("entry_form.html", form=form)

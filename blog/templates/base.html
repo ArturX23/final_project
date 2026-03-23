@@ -45,7 +45,17 @@
 
     <!-- MAIN -->
     <main role="main" class="container" style="padding-top: 5rem;">
-
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="container mt-3">
+      {% for message in messages %}
+        <div class="alert alert-success">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
         {% block content %}
         <!-- Tu zawartość strony -->
         {% endblock %}
