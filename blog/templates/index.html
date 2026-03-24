@@ -4,26 +4,39 @@
 
 {% block content %}
 
+<!-- --------------------------------------
+     Strona główna – lista opublikowanych wpisów
+     Każdy post wyświetlany jako karta z datą, tytułem, treścią
+     i przyciskami: Edytuj, Usuń (tylko dla zalogowanych)
+     oraz Czytaj więcej (ogólnodostępny)
+-------------------------------------- -->
 <h1 class="mb-4">Wszystkie wpisy</h1>
 
 {% for post in posts %}
 <div class="card mb-4">
     <div class="card-body">
 
+        <!-- Tytuł posta -->
         <h2 class="card-title">{{ post.title }}</h2>
 
+        <!-- Data publikacji -->
         <small class="text-muted d-block mb-2">
             {{ post.pub_date.strftime('%Y-%m-%d %H:%M') }}
         </small>
 
+        <!-- Treść posta (fragment) -->
         <p class="card-text">
-            {{ post.body }}
+            {{ post.body|truncate(200) }}
         </p>
 
-        <div class="mt-3">
+        <!-- --------------------------------------
+             Przycisk edytuj i usuń – tylko dla zalogowanych
+             Przycisk Czytaj więcej – ogólnodostępny
+             Wszystkie przyciski wyrównane w jednej linii
+        -------------------------------------- -->
+        <div class="mt-3 d-flex gap-2">
 
             {% if session.get('logged_in') %}
-
                 <a href="{{ url_for('manage_entry', entry_id=post.id) }}"
                    class="btn btn-warning btn-sm">
                    Edytuj
@@ -32,16 +45,19 @@
                 <form action="{{ url_for('delete_entry', entry_id=post.id) }}"
                       method="POST"
                       style="display:inline;">
-
                     <button type="submit"
                             class="btn btn-danger btn-sm"
                             onclick="return confirm('Na pewno usunąć wpis?');">
                         Usuń
                     </button>
-
                 </form>
-
             {% endif %}
+
+            <!-- Czytaj więcej – ogólnodostępny -->
+            <a href="{{ url_for('view_entry', entry_id=post.id) }}"
+               class="btn btn-primary btn-sm">
+               Czytaj więcej
+            </a>
 
         </div>
 

@@ -21,32 +21,22 @@
             <td style="white-space: nowrap;">
                 {{ post.pub_date.strftime('%Y-%m-%d') }}
             </td>
-
-            <td>
-                {{ post.title }}
-            </td>
-
-            <td>
-                {{ post.body|truncate(80) }}
-            </td>
-
+            <td>{{ post.title }}</td>
+            <td>{{ post.body|truncate(80) }}</td>
             <td style="white-space: nowrap;">
                 <a href="{{ url_for('manage_entry', entry_id=post.id) }}"
                    class="btn btn-sm btn-warning">
                    Edytuj
                 </a>
 
-               <form action="{{ url_for('delete_entry', entry_id=post.id) }}"
-      method="POST"
-      style="display:inline;">
-
-    <button type="submit"
-            class="btn btn-danger btn-sm"
-            onclick="return confirm('Na pewno usunąć wpis?');">
-        Usuń
-    </button>
-
-</form>
+                <form action="{{ url_for('delete_entry', entry_id=post.id) }}"
+                      method="POST" style="display:inline;">
+                    <button type="submit"
+                            class="btn btn-danger btn-sm"
+                            onclick="return confirm('Na pewno usunąć wpis?');">
+                        Usuń
+                    </button>
+                </form>
             </td>
         </tr>
     {% else %}

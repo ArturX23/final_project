@@ -1,0 +1,88 @@
+/* --------------------------------------
+   Główne style dla bloga
+-------------------------------------- */
+
+/* BODY */
+body {
+    padding-top: 5rem;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa; /* Jasne tło */
+    color: #212529;
+}
+
+/* CARD POSTÓW */
+.card {
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.card-text {
+    white-space: pre-line; /* zachowuje podziały linii w treści */
+    line-height: 1.5;
+}
+
+/* NAVBAR */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .nav-link {
+    margin-right: 1rem;
+}
+
+.navbar .btn {
+    margin-left: 0.5rem;
+}
+
+/* TABELA SZKICÓW */
+.table-sm th,
+.table-sm td {
+    padding: 0.5rem;
+    vertical-align: middle;
+}
+
+.table thead th {
+    text-align: center;
+}
+
+.table tbody td {
+    text-align: center;
+}
+
+/* PRZYCISKI */
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.85rem;
+}
+
+/* ALERTY */
+.alert {
+    border-radius: 0.3rem;
+}
+
+/* FORMULARZE */
+.form-group label {
+    font-weight: 500;
+}
+
+.form-control.is-invalid {
+    border-color: #dc3545;
+}
+
+.invalid-feedback {
+    display: block;
+}
+
+/* DODATKOWE ELEMENTY */
+.mt-3 {
+    margin-top: 1rem !important;
+}
+
+.gap-2 {
+    gap: 0.5rem;
+}

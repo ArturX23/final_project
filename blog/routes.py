@@ -1,6 +1,6 @@
 # final_project/blog/routes.py
 
-from flask import render_template, request, session, flash, redirect, url_for
+from flask import render_template, request, session, flash, redirect, url_for, abort
 from blog import app
 from blog.models import Entry, db
 from blog.forms import EntryForm, LoginForm
@@ -14,7 +14,7 @@ def index():
 # ADD/EDIT POST REFACTORED
 
 @app.route("/post/", defaults={'entry_id': None}, methods=["GET", "POST"])
-@app.route("/post/<int:entry_id>", methods=["GET", "POST"])
+@app.route("/post/edit/<int:entry_id>", methods=["GET", "POST"])
 @login_required
 def manage_entry(entry_id):
     if entry_id:
@@ -85,3 +85,14 @@ def delete_entry(entry_id):
     flash("Wpis został usunięty!")
 
     return redirect(url_for('index'))
+
+
+@app.route("/post/<int:entry_id>")
+def view_entry(entry_id):
+    post = Entry.query.get_or_404(entry_id)
+
+    # jeśli post nieopublikowany i niezalogowany → 404
+    if not post.is_published and not session.get('logged_in'):
+        abort(404)
+
+    return render_template("view_post.html", post=post)

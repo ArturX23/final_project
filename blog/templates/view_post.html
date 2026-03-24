@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+
+<!-- Widok pojedynczego wpisu -->
+<div class="card mb-4">
+    <div class="card-body">
+
+        <!-- Tytuł -->
+        <h2 class="card-title">{{ post.title }}</h2>
+
+        <!-- Data publikacji -->
+        <small class="text-muted d-block mb-2">
+            {{ post.pub_date.strftime('%Y-%m-%d %H:%M') }}
+        </small>
+
+        <!-- Treść posta z zachowaniem podziału na linie -->
+        <p class="card-text">
+            {{ post.body|replace('\n','<br>')|safe }}
+        </p>
+
+        <!-- Przyciski: Edytuj, Usuń, Powrót (tylko zalogowani dla Edytuj i Usuń) -->
+        <div class="mt-3 d-flex gap-2 align-items-center">
+
+            {% if session.get('logged_in') %}
+                <a href="{{ url_for('manage_entry', entry_id=post.id) }}"
+                   class="btn btn-warning btn-sm">
+                   Edytuj
+                </a>
+
+                <form action="{{ url_for('delete_entry', entry_id=post.id) }}"
+                      method="POST"
+                      style="display:inline;">
+                    <button type="submit"
+                            class="btn btn-danger btn-sm"
+                            onclick="return confirm('Na pewno usunąć wpis?');">
+                        Usuń
+                    </button>
+                </form>
+            {% endif %}
+
+            <!-- Przycisk Powrót – ogólnodostępny -->
+            <a href="{{ url_for('index') }}"
+               class="btn btn-secondary btn-sm">
+               &larr; Powrót
+            </a>
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

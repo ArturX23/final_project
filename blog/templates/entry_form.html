@@ -1,27 +1,40 @@
 {% extends "base.html" %}
 
+{% block title %}
+Dodaj / Edytuj wpis
+{% endblock %}
+
 {% block content %}
+
+<!-- ===================== NAGŁÓWEK ===================== -->
 <h3>Dodaj nowy wpis</h3>
 
+<!-- ===================== FORMULARZ ===================== -->
 <form method="POST">
+    <!-- CSRF / Hidden Fields -->
     {{ form.hidden_tag() }}
 
+    <!-- TYTUŁ -->
     <div class="form-group">
         {{ form.title.label }}
         {{ form.title(class_="form-control") }}
     </div>
 
+    <!-- TREŚĆ -->
     <div class="form-group">
         {{ form.body.label }}
         {{ form.body(class_="form-control", rows="10") }}
     </div>
 
+    <!-- OPCJA PUBLIKACJI -->
     <div class="form-check">
         {{ form.is_published(class_="form-check-input") }}
         {{ form.is_published.label(class_="form-check-label") }}
     </div>
 
+    <!-- PRZYCISK ZAPISU -->
     {{ form.submit(class_="btn btn-primary mt-3") }}
+
 </form>
 
 {% endblock %}
