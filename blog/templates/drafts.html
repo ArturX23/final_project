@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Szkice{% endblock %}
+
+{% block content %}
+
+<h1 class="mb-4">Szkice</h1>
+
+<table class="table table-striped table-sm">
+    <thead class="thead-dark">
+        <tr>
+            <th>Data</th>
+            <th>Tytuł</th>
+            <th>Treść</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for post in drafts %}
+        <tr>
+            <td style="white-space: nowrap;">
+                {{ post.pub_date.strftime('%Y-%m-%d') }}
+            </td>
+
+            <td>
+                {{ post.title }}
+            </td>
+
+            <td>
+                {{ post.body|truncate(80) }}
+            </td>
+
+            <td style="white-space: nowrap;">
+                <a href="{{ url_for('manage_entry', entry_id=post.id) }}"
+                   class="btn btn-sm btn-warning">
+                   Edytuj
+                </a>
+
+               <form action="{{ url_for('delete_entry', entry_id=post.id) }}"
+      method="POST"
+      style="display:inline;">
+
+    <button type="submit"
+            class="btn btn-danger btn-sm"
+            onclick="return confirm('Na pewno usunąć wpis?');">
+        Usuń
+    </button>
+
+</form>
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="4">Brak szkiców.</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
