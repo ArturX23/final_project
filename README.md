@@ -96,7 +96,7 @@ Usuwanie: Kliknij „Usuń” i potwierdź
 Szkice: Wyłącznie dla zalogowanego administratora w zakładce „Szkice”
 👤 Autor
 
-Projekt wykonany przez [Twoje Imię / Nick]
+Projekt wykonany przez [Artur Zieliński / ArturX23]
 📅 Data: 2026
 
 📜 Licencja
