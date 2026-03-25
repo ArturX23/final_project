@@ -3,6 +3,8 @@
 Prosty blog stworzony w **Pythonie** z użyciem **Flask**, umożliwiający tworzenie, edycję i przeglądanie wpisów. 
 Projekt obsługuje logowanie administratora oraz zarządzanie szkicami i opublikowanymi postami.
 
+LINK DO REPLIT: https://finalproject--arturzielinski8.replit.app
+
 ---
 
 ## 📑 Funkcjonalności
